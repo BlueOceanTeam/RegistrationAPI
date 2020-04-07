@@ -80,7 +80,6 @@
 		<artifactId>h2</artifactId>
 		<version>1.4.196</version>
 	</dependency>
-
     <!-- Servlet API -->
     <dependency>
       <groupId>javax.servlet</groupId>
