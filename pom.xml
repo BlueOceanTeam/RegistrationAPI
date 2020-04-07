@@ -7,7 +7,6 @@
   <version>0.1</version>
   <name>billing-user-reg-login</name>
   <url>http://maven.apache.org</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- spring.version>5.2.4.RELEASE</spring.version-->
@@ -17,7 +16,6 @@
     <java.version>1.8</java.version>
     <mysql.connector.version>8.0.17</mysql.connector.version>
   </properties>
-
   <dependencies>
     <!-- Junit -->
     <dependency>
