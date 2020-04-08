@@ -111,11 +111,14 @@
 	  <distributionManagement>
       <repository>
       <id>nexus</id>
-     <url>https://devopsbootcamp.jfrog.io/devopsbootcamp</url>
+     <!--url>https://devopsbootcamp.jfrog.io/devopsbootcamp</url-->
+	       <url>https://myartifactoryforops.jfrog.io/myartifactoryforops</url>
+	      
       </repository>
         <snapshotRepository>
             <id>nexus</id>
-            <url>https://devopsbootcamp.jfrog.io/devopsbootcamp</url>
+            <!--url>https://devopsbootcamp.jfrog.io/devopsbootcamp</url-->
+	       <url>https://myartifactoryforops.jfrog.io/myartifactoryforops</url>
         </snapshotRepository>
 </distributionManagement>
 </project>
