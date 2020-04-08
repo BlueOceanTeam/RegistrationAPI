@@ -10,6 +10,11 @@ node {
     stage('Clone sources') {
         git url: 'https://github.com/BlueOceanTeam/RegistrationAPI.git'
     }
+	
+   stage 'Static Code Analysis'
+    withSonarQubeEnv {
+        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+    }
 
     stage('Artifactory configuration') {
         // Tool name from Jenkins configuration
