@@ -5,46 +5,50 @@ node {
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo
     
- rtMaven.tool = "maven"
+    rtMaven.tool = "maven"
 
     stage('Clone sources') {
         git url: 'https://github.com/BlueOceanTeam/RegistrationAPI.git'
     }
 	
-stage('Build & SonarQube Scan') {
+    stage('Build & SonarQube Scan') {
       MVN="/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.9/bin/mvn"
       echo "running clean verify sonar"
       "$MVN clean verify sonar:sonar -Dsonar.host.url=http://13.93.165.125:9000 -Dsonar.java.binaries=/etc/sonarqube"
-      echo "running clean install"
-      "$MVN clean install deploy -DskipTests"
+      //echo "running clean install"
+      //"$MVN clean install deploy -DskipTests"
+    }
+    
+    stage('Slack Message') {
+	echo "sending message"
+     	slackSend (color: '#FFFF00', message: "BUILD AND SCAN SUCCESS for RegistrationAPI")
+     }
+	
+
+
+  stage('Artifactory configuration') {
+        // Tool name from Jenkins configuration
+        rtMaven.tool = "maven"
+        // Set Artifactory repositories for dependencies resolution and artifacts deployment.
+        rtMaven.deployer releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
+        rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
   }
 
-	stage('Slack Message') {
-           slackSend (color: '#FFFF00', message: "BUILD AND SCAN SUCCESS for RegistrationAPI")
-	}
+  stage('Maven build') {
+       buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install deploy'
+  }
+
+  stage('Publish build info') {
+
+    server.publishBuildInfo buildInfo
+
+  }
 	
-stage('Deploy to QA') {
+  /*stage('Deploy to QA') {
         node {
                     echo "Triggering job for branch"
                     build job: 'RegistrationAPI_DeployToQA', wait: false
         }
-    }
+   }*/
 
-    stage('Artifactory configuration') {
-        // Tool name from Jenkins configuration
-        rtMaven.tool = "maven"
-        // Set Artifactory repositories for dependencies resolution and artifacts deployment.
-        rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
-        rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
-    }
-
-  //  stage('Maven build') {
-       // buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
- //   }
-
-//    stage('Publish build info') {
-      //  server.publishBuildInfo buildInfo
-//    }
-    }
-	 
-
+  }
