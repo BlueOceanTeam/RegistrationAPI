@@ -25,10 +25,8 @@ stage('Build & SonarQube Scan') {
 	
 stage('Deploy to QA') {
         steps {
-            script {
                     echo "Triggering job for branch"
                     build job: 'RegistrationAPI_DeployToQA', wait: false
-            }
         }
     }
 
