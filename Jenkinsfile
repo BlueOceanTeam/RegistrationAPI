@@ -23,7 +23,7 @@ stage('Build & SonarQube Scan') {
            slackSend (color: '#FFFF00', message: "BUILD AND SCAN SUCCESS for RegistrationAPI")
 	}
 	
-stage('Trigger Branch Build') {
+stage('Deploy to QA') {
         steps {
             script {
                     echo "Triggering job for branch"
