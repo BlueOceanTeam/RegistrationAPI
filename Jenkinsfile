@@ -11,10 +11,13 @@ node {
         git url: 'https://github.com/BlueOceanTeam/RegistrationAPI.git'
     }
 	
-   stage 'Static Code Analysis'
-    withSonarQubeEnv('http://13.93.165.125:9000/') {
-        sh 'mvn clean package sonar:sonar'
-    }
+stage('Build & SonarQube Scan') {
+      MVN="/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.9/bin/mvn"
+      echo "running clean verify sonar"
+      "$MVN clean verify sonar:sonar -Dsonar.host.url=http://13.93.165.125:9000 -Dsonar.java.binaries=/etc/sonarqube"
+      echo "running clean install"
+      "$MVN clean install deploy -DskipTests"
+  }
 
     stage('Artifactory configuration') {
         // Tool name from Jenkins configuration
