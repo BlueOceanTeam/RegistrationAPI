@@ -12,8 +12,8 @@ node {
     }
 	
    stage 'Static Code Analysis'
-    withSonarQubeEnv {
-        sh 'mvn clean sonarqube'
+    withSonarQubeEnv('http://13.93.165.125:9000/') {
+        sh 'mvn clean package sonar:sonar'
     }
 
     stage('Artifactory configuration') {
