@@ -26,6 +26,7 @@ stage('Build & SonarQube Scan') {
                  //   message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}"
             	      message: "Build is successful"
             }
+	}
 
     stage('Artifactory configuration') {
         // Tool name from Jenkins configuration
