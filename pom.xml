@@ -108,4 +108,14 @@
       </plugin>
     </plugins>
   </build>
+	  <distributionManagement>
+      <repository>
+      <id>nexus</id>
+     <url>https://devopsbootcamp.jfrog.io/devopsbootcamp</url>
+      </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>https://devopsbootcamp.jfrog.io/devopsbootcamp</url>
+        </snapshotRepository>
+</distributionManagement>
 </project>
