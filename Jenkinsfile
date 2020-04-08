@@ -20,12 +20,7 @@ stage('Build & SonarQube Scan') {
   }
 
 	stage('Slack Message') {
-            steps {
-                slackSend channel: '#devopslearning',
-                    color: 'good',
-                 //   message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}"
-            	      message: "Build is successful"
-            }
+           slackSend (color: '#FFFF00', message: "STARTED")
 	}
 
     stage('Artifactory configuration') {
