@@ -31,8 +31,9 @@ node {
 		MVN="/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.9/bin/mvn"
 		echo "running SonarQube Scan "
 		//"$MVN clean verify sonar:sonar -Dsonar.host.url=http://13.93.165.125:9000 -Dsonar.java.binaries=/etc/sonarqube"
-		rtMaven.run pom: 'pom.xml', goals: '-Dsonar.login=admin -Dsonar.password=admin -Dsonar.tests=src/test/java -Dsonar.sources=src/main/java sonar:sonar -Dsonar.host.url=http://13.93.165.125:9000/'
-		//echo "running clean install"
+		//rtMaven.run pom: 'pom.xml', goals: '-Dsonar.login=admin -Dsonar.password=admin -Dsonar.tests=src/test/java -Dsonar.sources=src/main/java sonar:sonar -Dsonar.host.url=http://13.93.165.125:9000/'
+		rtMaven.run pom: 'pom.xml', goals: '-Dsonar.login=admin -Dsonar.password=admin -Dsonar.tests=src/test/java -Dsonar.sources=src/main/java org.sonarsource.scanner.maven:sonar-maven-plugin:RELEASE:sonar -Dsonar.host.url=http://13.93.165.125:9000/'
+		//echo "running clean install"  mvn org.sonarsource.scanner.maven:sonar-maven-plugin:RELEASE:sonar
 		//"$MVN clean install deploy -DskipTests"
 	}
 	
