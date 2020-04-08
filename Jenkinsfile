@@ -22,6 +22,15 @@ stage('Build & SonarQube Scan') {
 	stage('Slack Message') {
            slackSend (color: '#FFFF00', message: "BUILD AND SCAN SUCCESS for RegistrationAPI")
 	}
+	
+stage('Trigger Branch Build') {
+        steps {
+            script {
+                    echo "Triggering job for branch"
+                    build job: "RegistrationAPI_DeployToQA", wait: false
+            }
+        }
+    }
 
     stage('Artifactory configuration') {
         // Tool name from Jenkins configuration
