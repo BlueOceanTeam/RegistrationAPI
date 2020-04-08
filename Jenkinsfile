@@ -15,11 +15,12 @@ node {
       MVN="/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.9/bin/mvn"
       echo "running clean verify sonar"
       "$MVN clean verify sonar:sonar -Dsonar.host.url=http://13.93.165.125:9000 -Dsonar.java.binaries=/etc/sonarqube"
-      echo "running clean install"
-      "$MVN clean install deploy -DskipTests"
+      //echo "running clean install"
+      //"$MVN clean install deploy -DskipTests"
     }
     
     stage('Slack Message') {
+	echo "sending message"
      	slackSend (color: '#FFFF00', message: "BUILD AND SCAN SUCCESS for RegistrationAPI")
      }
 	
@@ -34,7 +35,7 @@ node {
   }
 
   stage('Maven build') {
-       buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+       buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install deploy'
   }
 
   stage('Publish build info') {
