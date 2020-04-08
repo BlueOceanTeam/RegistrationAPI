@@ -20,7 +20,7 @@ stage('Build & SonarQube Scan') {
   }
 
 	stage('Slack Message') {
-           slackSend (color: '#FFFF00', message: "STARTED")
+           slackSend (color: '#FFFF00', message: "BUILD AND SCAN SUCCESS for RegistrationAPI")
 	}
 
     stage('Artifactory configuration') {
