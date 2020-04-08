@@ -19,6 +19,14 @@ stage('Build & SonarQube Scan') {
       "$MVN clean install deploy -DskipTests"
   }
 
+	stage('Slack Message') {
+            steps {
+                slackSend channel: '#devopslearning',
+                    color: 'good',
+                 //   message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}"
+            	      message: "Build is successful"
+            }
+
     stage('Artifactory configuration') {
         // Tool name from Jenkins configuration
         rtMaven.tool = "maven"
