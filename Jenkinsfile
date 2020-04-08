@@ -27,13 +27,13 @@ stage('Build & SonarQube Scan') {
         rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
     }
 
-    stage('Maven build') {
-        buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
-    }
+  //  stage('Maven build') {
+       // buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+ //   }
 
-    stage('Publish build info') {
-        server.publishBuildInfo buildInfo
-    }
+//    stage('Publish build info') {
+      //  server.publishBuildInfo buildInfo
+//    }
     }
 	 
 
