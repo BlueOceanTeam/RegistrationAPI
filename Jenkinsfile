@@ -50,6 +50,6 @@ node {
 		server.publishBuildInfo buildInfo
 	}
 	stage('Slack Message') {
-		slackSend (color: '#FFFF00', message: "BUILD AND SCAN SUCCESS for RegistrationAPI")
+		slackSend (color: '#FFFF00', message: "RegistrationAPI deployed to PRODUCTION successfully")
 	}
   }
