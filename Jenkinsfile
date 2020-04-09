@@ -41,7 +41,7 @@ node {
 		build job: 'RegistrationAPI_PerformanceTesting', wait: true
 	}
 	stage('PROD Deployment') {		
-		//build job: 'RegistrationAPI_PerformanceTesting', wait: true
+		build job: 'RegistrationAPI_AnsibleDeploy_Prod', wait: true
 	}
 	stage('AcceptanceTesting') {		
 		build job: 'RegistrationAPI_Acceptancetesting', wait: true
