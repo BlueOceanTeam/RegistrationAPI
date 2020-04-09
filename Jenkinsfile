@@ -26,12 +26,10 @@ node {
 		server.publishBuildInfo buildInfo
 	}
 	stage('SonarQubeJob') {
-        steps {
         node {
                     echo "Triggering job for sonarqube"
                     build job: 'RegistrationAPI_Scan', wait: false
         }
-	}
 	}
 	stage('Build & SonarQube Scan') {
 		// Tool name from Jenkins configuration
