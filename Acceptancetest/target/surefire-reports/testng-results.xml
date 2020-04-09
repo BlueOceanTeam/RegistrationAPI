@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="6330" started-at="2020-04-09T21:57:24Z" finished-at="2020-04-09T21:57:30Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="6330" started-at="2020-04-09T21:57:24Z" finished-at="2020-04-09T21:57:30Z">
+      <class name="acceptancetest.acat">
+        <test-method status="PASS" signature="homePagetest()[pri:0, instance:acceptancetest.acat@75bd9247]" name="homePagetest" duration-ms="5987" started-at="2020-04-09T15:57:24Z" finished-at="2020-04-09T15:57:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homePagetest -->
+        <test-method status="PASS" signature="logintest()[pri:0, instance:acceptancetest.acat@75bd9247]" name="logintest" duration-ms="321" started-at="2020-04-09T15:57:30Z" finished-at="2020-04-09T15:57:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logintest -->
+      </class> <!-- acceptancetest.acat -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
