@@ -66,7 +66,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
     <div class="w3-twothird">
       <h1>Looking For Devops service provider	</h1>
-      <h5 class="w3-padding-32">(Monoliths, etc.). To that end, Marslander is looking for a service provider to achieve its aspirational business benefits wh ich are to:Reduce time to market of new application functionalities and other code changes.Iterative and incremental delivery approach with small release cycles to deliver incremental value to business.Improve quality of released code through improved, increasingly automated testing and release processes.Effective and robust communication process & better collaboration of the business and delivery units.
+      <h5 class="w3-padding-32">To that end, Marslander is looking for a service provider to achieve its aspirational business benefits wh ich are to:Reduce time to market of new application functionalities and other code changes.Iterative and incremental delivery approach with small release cycles to deliver incremental value to business.Improve quality of released code through improved, increasingly automated testing and release processes.Effective and robust communication process & better collaboration of the business and delivery units.
 Reduce running cost of Application Operations overall IT</h5>
 
       <p class="w3-text-grey">Build Enterprise moving software assembly line and capability to enable traceability and quality controls. The focus for the Ent erprise moving software assembly line is to enable the engineering teams to deploy anytime with no human touch. Marslander focuses on rapid service delivery using agile and lean practices, therefore Continuous Delivery and DevOps are imp ort ant requirements
