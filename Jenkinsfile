@@ -36,6 +36,10 @@ node {
 		
 		build job: 'RegistrationAPI_Scan', wait: false
 	}
+	stage('Functional Testing') {		
+		echo "running SonarQube Scan "	
+		build job: 'RegistrationAPI_FunctionalTesting', wait: false
+	}
 	
 	stage('Slack Message') {
 		echo "sending message"
