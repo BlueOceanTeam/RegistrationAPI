@@ -30,13 +30,16 @@ node {
 		//rtMaven.run pom: 'pom.xml', goals: '-Dsonar.login=admin -Dsonar.password=admin -Dsonar.tests=src/test/java -Dsonar.sources=src/main/java sonar:sonar -Dsonar.host.url=http://13.93.165.125:9000/'
 		//"$MVN clean install deploy -DskipTests"
 		
-		build job: 'RegistrationAPI_Scan', wait: false
+		build job: 'RegistrationAPI_Scan', wait: true
 	}
 	stage('QA Deployment') {		
 		build job: 'RegistrationAPI_AnsibleDeploy', wait: true
 	}
 	stage('QA Functional Testing') {		
 		build job: 'RegistrationAPI_FunctionalTesting', wait: true
+	}
+	stage('QA Performance Testing') {		
+		build job: 'RegistrationAPI_PerformanceTesting', wait: true
 	}
 	stage('Publish build info') {
 		server.publishBuildInfo buildInfo
