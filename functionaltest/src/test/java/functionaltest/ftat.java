@@ -16,8 +16,8 @@ public class ftat {
 	public HtmlUnitDriver driver;
 	//public WebDriver driver;
 	public WebDriverWait wait;
-	public String URL = "http://18.191.229.168:8080/Registrationapp/";
-	public String URL1 = "http://18.191.229.168:8080/Registrationapp/login";
+	public String URL = "http://13.91.103.36:4000/springmvc-user-reg-login/";
+	public String URL1 = "http://13.91.103.36:4000/springmvc-user-reg-login/login";
 	 
 	@Test(priority = 0)
 	public void homePagetest() {
@@ -26,15 +26,8 @@ public class ftat {
 		wait = new WebDriverWait(driver, 10);
 		driver.get(URL);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		// Login Page content check
-		//driver.findElement(By.xpath("//h1[text()='JUPITER COMMUNICATION']")).isDisplayed();
-		//driver.findElement(By.name("username")).isDisplayed();
-		//driver.findElement(By.name("userpassword")).isDisplayed();
 		driver.findElement(By.xpath("//a[contains(text(),'Login')]")).isDisplayed();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		// Login operation
-		//driver.findElement(By.name("username")).sendKeys("guest");
-		//driver.findElement(By.name("userpassword")).sendKeys("guest");
 		driver.findElement(By.xpath("//a[contains(text(),'Register')]")).click();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
@@ -47,7 +40,6 @@ public class ftat {
 		driver.get(URL1);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		// Login Page content check
-		//driver.findElement(By.xpath("//h1[text()='JUPITER COMMUNICATION']")).isDisplayed();
 		driver.findElement(By.name("username")).isDisplayed();
 		driver.findElement(By.name("password")).isDisplayed();
 		driver.findElement(By.xpath("//input[@id='username']")).isDisplayed();
