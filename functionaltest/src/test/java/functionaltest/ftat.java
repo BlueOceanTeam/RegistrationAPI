@@ -16,8 +16,8 @@ public class ftat {
 	public HtmlUnitDriver driver;
 	//public WebDriver driver;
 	public WebDriverWait wait;
-	public String URL = "http://18.191.229.168:8080/Registrationapp/";
-	public String URL1 = "http://18.191.229.168:8080/Registrationapp/login";
+	public String URL = "http://13.91.103.36:4000/springmvc-user-reg-login/";
+	public String URL1 = "http://13.91.103.36:4000/springmvc-user-reg-login/login";
 	 
 	@Test(priority = 0)
 	public void homePagetest() {
