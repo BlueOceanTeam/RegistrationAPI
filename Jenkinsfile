@@ -22,7 +22,7 @@ node {
 		buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 	}
 
-	stage('Build & SonarQube Scan') {
+	stage('SonarQube Scan') {
 		// Tool name from Jenkins configuration
 		//rtMaven.tool = "maven"
 		//MVN="/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.9/bin/mvn"
