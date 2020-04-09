@@ -40,6 +40,12 @@ node {
 	stage('Performance Testing') {		
 		build job: 'RegistrationAPI_PerformanceTesting', wait: true
 	}
+	stage('PROD Deployment') {		
+		//build job: 'RegistrationAPI_PerformanceTesting', wait: true
+	}
+	stage('AcceptanceTesting') {		
+		build job: 'RegistrationAPI_Acceptancetesting', wait: true
+	}	
 	stage('Publish build info') {
 		server.publishBuildInfo buildInfo
 	}
