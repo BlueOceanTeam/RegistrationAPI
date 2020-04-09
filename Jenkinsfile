@@ -38,7 +38,7 @@ node {
 	stage('QA Functional Testing') {		
 		build job: 'RegistrationAPI_FunctionalTesting', wait: true
 	}
-	stage('QA Performance Testing') {		
+	stage('Performance Testing') {		
 		build job: 'RegistrationAPI_PerformanceTesting', wait: true
 	}
 	stage('Publish build info') {
