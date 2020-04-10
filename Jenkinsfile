@@ -41,11 +41,11 @@ node {
 	}
 	
 	stage('Functional Testing') {		
-		build job: 'RegistrationAPI_FunctionalTesting', wait: true
+		build job: 'RegistrationAPI_FunctionalTesting', wait: false
 	}
 	
 	stage('Performance Testing') {		
-		build job: 'RegistrationAPI_PerformanceTesting', wait: true
+		build job: 'RegistrationAPI_PerformanceTesting', wait: false
 	}
 	
 	stage('Publish Artifactory') {
