@@ -6,21 +6,25 @@ node {
 	def buildInfo
 	rtMaven.tool = "maven"
 
-	stage('Clone sources') {
+	/*stage('Clone sources') {
 		git url: 'https://github.com/BlueOceanTeam/RegistrationAPI.git'
-	}
+	}*/
 	
-	stage('Artifactory configuration') {
+	/*stage('Artifactory configuration') {
 		// Tool name from Jenkins configuration
 		rtMaven.tool = "maven"
 		// Set Artifactory repositories for dependencies resolution and artifacts deployment.
 		rtMaven.deployer releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
 		rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
-	}
-
-	stage('Maven build') {
+		
 		buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
-	}
+		
+		server.publishBuildInfo buildInfo
+	}*/
+
+	/*stage('Maven build') {
+		buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+	}*/
 
 	stage('SonarQube Scan') {
 		// Tool name from Jenkins configuration
@@ -31,24 +35,43 @@ node {
 		//"$MVN clean install deploy -DskipTests"		
 		build job: 'RegistrationAPI_Scan', wait: true
 	}
+	
 	stage('QA Deployment') {		
 		build job: 'RegistrationAPI_AnsibleDeploy', wait: true
 	}
-	stage('QA Functional Testing') {		
+	
+	stage('Functional Testing') {		
 		build job: 'RegistrationAPI_FunctionalTesting', wait: true
 	}
+	
 	stage('Performance Testing') {		
 		build job: 'RegistrationAPI_PerformanceTesting', wait: true
 	}
+	
+	stage('Publish Artifactory') {
+		// Tool name from Jenkins configuration
+		rtMaven.tool = "maven"
+		// Set Artifactory repositories for dependencies resolution and artifacts deployment.
+		rtMaven.deployer releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
+		rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
+		
+		buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+		
+		server.publishBuildInfo buildInfo
+	}
+	
 	stage('PROD Deployment') {		
 		build job: 'RegistrationAPI_AnsibleDeploy_Prod', wait: true
 	}
+	
 	stage('AcceptanceTesting') {		
 		build job: 'RegistrationAPI_Acceptancetesting', wait: true
-	}	
-	stage('Publish build info') {
-		server.publishBuildInfo buildInfo
 	}
+	
+	/*stage('Publish build info') {
+		server.publishBuildInfo buildInfo
+	}*/
+	
 	stage('Slack Message') {
 		slackSend (color: '#FFFF00', message: "RegistrationAPI deployed to PRODUCTION successfully")
 	}
