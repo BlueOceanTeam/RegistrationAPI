@@ -26,7 +26,7 @@ node {
 		buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 	}*/
 
-	stage('SonarQube Scan') {
+	stage('Sonar Scan') {
 		// Tool name from Jenkins configuration
 		//rtMaven.tool = "maven"
 		//MVN="/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.9/bin/mvn"
@@ -36,7 +36,7 @@ node {
 		build job: 'RegistrationAPI_Scan', wait: true
 	}
 	
-	stage('QA Deployment') {		
+	stage('QA Build & Deployment') {		
 		build job: 'RegistrationAPI_AnsibleDeploy', wait: true
 	}
 	
@@ -61,10 +61,11 @@ node {
 	}
 	
 	stage('PROD Deployment') {		
-		build job: 'RegistrationAPI_AnsibleDeploy_Prod', wait: true
+		//build job: 'RegistrationAPI_AnsibleDeploy_Prod', wait: true
+		build job: 'RegistrationAPI_AnsibleDeployOnly_Prod', wait: true		
 	}
 	
-	stage('AcceptanceTesting') {		
+	stage('Acceptance Testing') {		
 		build job: 'RegistrationAPI_Acceptancetesting', wait: true
 	}
 	
