@@ -16,8 +16,8 @@ public class acat {
 	public HtmlUnitDriver driver;
 	//public WebDriver driver;
 	public WebDriverWait wait;
-	public String URL = "http://65.52.115.247:4000/springmvc-user-reg-login/";
-	public String URL1 = "http://65.52.115.247:4000/springmvc-user-reg-login/login";
+	public String URL = "http://138.91.252.210:4000/springmvc-user-reg-login/";
+	public String URL1 = "http://138.91.252.210:4000/springmvc-user-reg-login/login";
 	 
 	@Test(priority = 0)
 	public void homePagetest() {
